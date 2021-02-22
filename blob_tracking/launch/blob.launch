@@ -1,0 +1,10 @@
+<launch>
+  
+  <arg name="model" default="$(find blob_tracking)/urdf/blob.urdf"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+    
+  <!-- <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher" /> -->
+
+<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
+<param name="publish_frequency" type="double" value="30.0" />
+</launch>
